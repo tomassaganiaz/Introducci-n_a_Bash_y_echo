@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# 🧬 Funciones
+
+saludo_dinamico() {
+  echo "🖐️ ¡Hola! ¿Cuál es tu nombre?"
+  read nombre
+  echo "¡Mucho gusto, $nombre!"
+}
+
+detectar_sistema() {
+  SO=$(uname)
+  echo "🔍 Detectando sistema operativo..."
+  case "$SO" in
+    Linux) echo "✅ Estás en Linux" ;;
+    Darwin) echo "✅ Estás en macOS" ;;
+    MINGW*|CYGWIN*) echo "✅ Estás en Windows (Git Bash)" ;;
+    *) echo "⚠️ Sistema operativo no reconocido: $SO" ;;
+  esac
+}
+
+mostrar_fecha_directorio() {
+  echo "📅 Fecha actual:"
+  date
+  echo "📁 Directorio actual:"
+  pwd
+}
+
+listar_archivos() {
+  echo "📄 Archivos en el directorio:"
+  case "$SO" in
+    Linux) echo "🧮 Listando archivos en Linux:" ;;
+    Darwin) echo "🍏 Listando archivos en macOS:" ;;
+    MINGW*|CYGWIN*) echo "🪟 Listando archivos en Windows:" ;;
+  esac
+  ls -la
+}
+
+verificar_admin() {
+  echo "🔐 Verificando permisos..."
+  if [ "$(whoami)" = "root" ]; then
+    echo "✅ Estás ejecutando como administrador (root)"
+  else
+    echo "ℹ️ Estás ejecutando como usuario: $(whoami)"
+  fi
+}
+
+espacio_disco() {
+  echo "📦 Espacio libre en disco:"
+  df -h
+}
+
+permisos_archivos() {
+  echo "🔐 Permisos de los archivos en el directorio actual:"
+  for archivo in *; do
+    [ -e "$archivo" ] && stat "$archivo" | grep "Access: " | head -n 1
+  done
+}
+
+contar_archivos() {
+  echo "📊 Cantidad de archivos en el directorio:"
+  total=$(ls | wc -l)
+  echo "Total: $total archivos"
+}
+
+# 🚀 Ejecución del script
+
+saludo_dinamico
+detectar_sistema
+mostrar_fecha_directorio
+listar_archivos
+verificar_admin
+espacio_disco
+permisos_archivos
+contar_archivos
