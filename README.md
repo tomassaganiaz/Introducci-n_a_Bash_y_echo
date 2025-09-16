@@ -50,3 +50,56 @@ Este trabajo práctico tiene como objetivo introducirte al scripting en Bash uti
     </tr>
   </tbody>
 </table>
+
+Objetivos del script:
+- Familiarizarse con comandos básicos de Linux.
+
+- Aprender a crear y ejecutar scripts en Bash.
+
+- Detectar el sistema operativo y adaptar el comportamiento del script.
+
+- Interactuar con el usuario mediante entrada dinámica.
+
+- Modularizar tareas usando funciones.
+
+- Mostrar información útil del sistema como permisos, espacio en disco y cantidad de archivos.
+
+
+Procedimientos paso a paso 
+
+1- Crear el archivo del script
+
+nano script.sh
+
+2- Dar permisos de ejecución
+
+chmod +x script.sh
+
+3- Ejecutar el script
+
+./script.sh
+
+4- Bonus opcional explicado
+El uso de read permite que el script interactúe con el usuario. En este caso, se le pide su nombre y se lo saluda dinámicamente:
+
+read nombre
+echo "¡Mucho gusto, $nombre!"
+
+
+Expansiones sugeridas (opcional para destacar)
+Si querés ir más allá y mostrar tu dominio de Bash, podés agregar:
+
+✅ Verificación de si el usuario tiene permisos de administrador (whoami)
+
+📦 Mostrar el espacio libre en disco (df -h)
+
+🔐 Mostrar los permisos de los archivos (stat o ls -l)
+
+📊 Contar cuántos archivos hay en el directorio (ls | wc -l)
+
+🧬 Crear funciones para modularizar el script
+
+🐞 Errores comunes
+Permiso denegado al ejecutar el script Solución: asegurarse de haber ejecutado chmod +x script.sh
+
+El script no se ejecuta en Windows Solución: usar Git Bash o WSL (Windows Subsystem for Linux)
